@@ -10,6 +10,8 @@ public class BiggerNumberGame {
     public BiggerNumberGame(int lowerLimit, int upperLimit) {
         this.lowerLimit = lowerLimit;
         this.upperLimit = upperLimit;
+        score = 0;
+        generateRandomNumbers();
     }
 
     public void generateRandomNumbers(){
@@ -18,8 +20,9 @@ public class BiggerNumberGame {
         //generate another number and make sure that it is a different number
         //store that into number2
         number1 = (int)(Math.random()*(upperLimit - lowerLimit + 1)) + lowerLimit;
-        do{number2 =(int)(Math.random()*(upperLimit - lowerLimit + 1)) + lowerLimit;}
-            while(number1 == number2);
+        do{
+            number2 =(int)(Math.random()*(upperLimit - lowerLimit + 1)) + lowerLimit;
+        }   while(number1 == number2);
 
 
     }
@@ -31,9 +34,11 @@ public class BiggerNumberGame {
         //return a relevant message
         int correctAnswer = Math.max(number1, number2);
         if(correctAnswer == answer){
+            score++;
             return "Correct!";
         }
         else{
+            score--;
             return "Incorrect";
         }
     }
